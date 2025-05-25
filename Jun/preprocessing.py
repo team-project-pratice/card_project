@@ -1,7 +1,5 @@
 def preprocess_feature(data):
     data['VIP등급코드'] = data['VIP등급코드'].str.replace("_","0").astype(int)
-    data['청구금액_B0'] = data['청구금액_B0'].apply(lambda x: 1 if x > 0 else x)
-    data['청구금액_B0'] = data['청구금액_B0'].apply(lambda x: 1 if x > 0 else x)
     data['연령'] = data['연령'].str.replace('대|이상','',regex=True).astype(int)
     # 이용건수 합치기 예시
     data['이용건수_B0M'] = data[['이용건수_일시불_B0M', '이용건수_체크_B0M', '이용건수_할부_B0M']].sum(axis=1)
